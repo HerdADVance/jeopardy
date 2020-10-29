@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="/favicon.png">
 
-        <title>Livewire</title>
+        <title>Untitled Quiz Show</title>
 
         <style>
             textarea{
@@ -70,7 +70,7 @@
 
     <body>
 
-    	<div>
+    	<!--div>
 			<a href="/">Home</a>
             @auth
                 <livewire:logout />
@@ -79,7 +79,7 @@
                 <a href="/login">Login</a>
                 <a href="/register">Register</a>
 		    @endguest  
-        </div>
+        </div-->
 
         <div>
             {{ $slot }}

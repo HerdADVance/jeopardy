@@ -15,6 +15,8 @@ use App\Comment;
 |
 */
 
+Route::get('/game/{gid}' , App\Http\Livewire\GameBoard::class)->name('game');
+
 Route::get('/' , App\Http\Livewire\Home::class)->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'guest'], function(){

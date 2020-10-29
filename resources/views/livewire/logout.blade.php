@@ -1,3 +1,3 @@
 <span>
-	<a wire:click="logout">Logout</a>
+	<button wire:click="logout">Logout</a>
 </span>

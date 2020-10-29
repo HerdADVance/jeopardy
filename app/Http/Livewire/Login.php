@@ -8,18 +8,22 @@ use Illuminate\Support\Facades\Auth;
 class Login extends Component
 {
     public $form = [
-        'email' => '',
+        'username' => '',
         'password' => ''
     ];
 
     public function submit(){
         $this->validate([
-            'form.email'    => 'required|email',
+            'form.username'    => 'required',
             'form.password' => 'required',
         ]);
 
         Auth::attempt($this->form);
-        return redirect(route('home'));
+        return redirect('/game/1');
+    }
+
+    public function username(){
+        return 'username';
     }
 
     public function render()

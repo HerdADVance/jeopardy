@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 textarea {
   width: 100%;
   height: 100px;
@@ -25,3 +28,152 @@ div.comment {
   padding: 10px 20px;
 }
 
+body{
+  background: #2841b7;
+}
+
+
+.game{
+  background: #2841b7;
+  height: calc(100vh - 160px);
+  margin: 100px 60px 40px 60px;
+}
+
+.players{
+  display: flex;
+  flex-flow: row;
+  height: 60px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.player{
+  background: #333;
+  box-shadow: 1px 1px 4px #666;
+  border-right: 3px solid #222;
+  color: white;
+  font-size: 24px;
+  height: 60px;
+  line-height: 60px;
+  width: 100%;
+  text-align: center;
+}
+.player:last-child{
+  border-right: none;
+}
+.player.guess{
+  background: dodgerblue;
+}
+.player.turn{
+  background: crimson;
+}
+.player-name{
+  font-size: 24px;
+}
+
+.board{
+  clear: both;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+}
+
+.category{
+  float: left;
+  height: 100%;
+  width: 16.66%;
+}
+
+.category-title{
+  align-items: center;
+  background: #001578;
+  border: 1px solid #d7a04b;
+  color: #FFF;
+  display: flex;
+  font-size: 28px;
+  height: 120px;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+}
+.question{
+  align-items: center;
+  background: #001578;
+  border: 1px solid #d7a04b;
+  color: #d7a04b;
+  cursor: pointer;
+  display: flex;
+  height: calc(20% - 24px);
+  justify-content: center;
+  transition: background 0.25s ease;
+  width: 100%;
+}
+
+.question:hover{
+  background: #041e98;
+}
+
+.question-value{
+  font-size: 72px;
+  font-weight: bold;
+}
+.question-clue{
+  display: none;
+  font-size: 18px;
+}
+.question-answer{
+  display: none;
+  font-size: 32px;
+}
+
+.clue-container{
+  align-items: center;
+  background: darkblue;
+  border: 1px solid #d7a04b;
+  color: white;
+  display: none;
+  flex-direction: column;
+  font-family: sans-serif;
+  font-size: 50px;
+  height: 100%;
+  justify-content: center;
+  line-height: 75px;
+  overflow: hidden;
+  padding: 10%;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  transition: 0.25s all ease;
+  width: 100%;
+  z-index: 2;
+}
+.clue-container.active{
+  display: flex;
+}
+.clue-buttons{
+  bottom: 20px;
+  position: absolute;
+}
+
+.next-round{
+  background: dodgerblue;
+  bottom: -10px;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 68px;
+}
+/*users
+  has 1 player
+
+players
+  belongs to 1 user
+  belongs to 1 game
+
+games
+  has 3-6 players
+  has 2 boards
+
+boards
+  belongs to 1 game*/
