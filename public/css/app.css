@@ -164,16 +164,3 @@ body{
   position: absolute;
   right: 68px;
 }
-/*users
-  has 1 player
-
-players
-  belongs to 1 user
-  belongs to 1 game
-
-games
-  has 3-6 players
-  has 2 boards
-
-boards
-  belongs to 1 game*/

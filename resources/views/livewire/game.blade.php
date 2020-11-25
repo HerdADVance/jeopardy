@@ -1,11 +1,12 @@
-<div class="game" wire:poll.5000ms>
+<div class="game">
 
 	<div class="players">
+		@auth{{Auth::user()->id}}@endauth
 		@foreach($players as $player)
 			 <div 
 			 class="player
-			 @if($game->player_turn == $player->id) turn @endif
-			 @if($game->player_guess == $player->id) guess @endif
+			 @if($game->player_turn == $player->user_id) turn @endif
+			 @if($game->player_guess == $player->user_id) guess @endif
 			 "
 			 wire:key="player-{{$player->id}}">
 				<span class="player-name">{{ $player->user->name }}: </span>
@@ -23,7 +24,7 @@
 					@foreach($category->questions as $question)
 						<div 
 							class="question" 
-							wire:click="showClue( {{$question->id}}, {{200 * $game->round * $count}} )" 
+							@auth wire:click="handleClueClick( {{$question->id}}, {{Auth::user()->id}} )"@endauth
 							wire:key="question-{{$question->id}}"
 						>
 							@if(!$question->selected)
@@ -36,21 +37,21 @@
 			@endforeach
 		@endif
 
-		<div class="clue-container {{ $clueActive? 'active' : '' }}">
+		<div class="clue-container {{ $game->clue_active? 'active' : '' }}">
 			
-			<span class="clue-text">{{ $clueText }}</span>
+			<span class="clue-text">{{ $game->active_text }}</span>
 
 			@auth
 				@if(Auth::user()->id == $game->host)
 					<div class="clue-buttons">
-							@if($clueActive)
-								@if(!$clueActiveAnswer)
-									<button wire:click="questionCorrect">Correct</button>
-									<button wire:click="questionWrong">Wrong</button>
+							@if($game->clue_active)
+								@if(!$game->answer_active)
+									<button wire:click="handleAnswerCorrectClick( {{Auth::user()->id}} )">Correct</button>
+									<button wire:click="handleAnswerWrongClick( {{Auth::user()->id}} )">Wrong</button>
 									<button wire:click="questionAllWrong">All Wrong</button>
 								@endif
-								@if($clueActiveAnswer)
-									<button wire:click="questionContinue">Continue</button>
+								@if($game->answer_active)
+									<button wire:click="handleContinueClick( {{Auth::user()->id}} )">Continue</button>
 								@endif
 							@endif
 					</div>
@@ -78,5 +79,6 @@
 	@auth
 		<livewire:logout />
 	@endauth
+
 
 </div>

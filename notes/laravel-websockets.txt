@@ -1,0 +1,79 @@
+Install
+--------
+composer require beyondcode/laravel-websockets
+
+Publish Migration File
+----------------------
+php artisan vendor:publish --provider="BeyondCode\LaravelWebSockets\WebSocketsServiceProvider" --tag="migrations"
+
+Publish Config File
+------------------
+php artisan vendor:publish --provider="BeyondCode\LaravelWebSockets\WebSocketsServiceProvider" --tag="config"
+
+
+.env file
+---------
+APP_URL needs changed from localhost if you want stats (not necessary)
+Set BROADCAST_DRIVER to pusher since this is going to mimic Pusher
+Make up your own App Id, Key, and Secret
+
+
+config/websockets.php file
+--------------------------
+Enable_client_messages allows peer to peer messages. Off by default. Leave off unless you really know what you're doing
+
+
+Launch the socket server on port 6001
+-------------------------------------
+php artisan websockets:serve
+Look into Supervisor to always have this command running
+
+
+View socket dashboard after running above command along with php artisan serve
+------------------------------------------------------------------------------
+http://localhost:8000/laravel-websockets
+
+
+Install Pusher, since laravel-websockets is based on it
+-------------------------------------------------------
+composer require pusher/pusher-php-server
+
+
+config/broadcasting.php
+-----------------------
+Add the following to the options array inside connections > pusher:
+
+'host' => '127.0.0.1',
+'port' => 6001,
+'scheme' => 'http'
+
+If using SSL, also add encrypted => true and change scheme from http to https 
+
+
+
+Create an Event
+---------------
+php artisan make:event NameOfEvent
+
+
+In the Event file (/app/Events/NameOfEvent.php)
+-----------------------------------------------
+Add "implements ShouldBroadcast" to end of class name
+Create public variable, do stuff with it inside constructor
+Change name of channel
+
+
+Install front-end dependecies
+-----------------------------
+npm install laravel-echo pusher-js
+
+
+resources/js/bootstrap.js file
+------------------------------
+Uncomment window.pusher and window.echo code at bottom, and add the following to the Echo object:
+
+wsHost: 'window.location.hostname',
+wsPort: 6001
+
+
+Commandline: npm run dev to compile JS

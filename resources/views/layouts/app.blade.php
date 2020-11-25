@@ -56,16 +56,17 @@
         </style>
 
         <!-- Scripts -->
-        <script src="{{ asset(mix('js/app.js')) }}" defer data-turbolinks-track="reload"></script>
+        <script src="{{ asset(mix('js/app.js')) }}"></script>
         <livewire:scripts/>
-        <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false"></script>
+        
 
         @stack('scripts')
 
         <!-- Styles -->
-        <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet" data-turbolinks-track="reload">
+        <link href="/css/app.css" rel="stylesheet" data-turbolinks-track="reload">
         <livewire:styles/>
         @stack('styles')
+
 
     </head>
 

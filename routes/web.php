@@ -15,7 +15,7 @@ use App\Comment;
 |
 */
 
-Route::get('/game/{gid}' , App\Http\Livewire\GameBoard::class)->name('game');
+Route::get('/game/{gameId}' , App\Http\Livewire\GameBoard::class)->name('game');
 
 Route::get('/' , App\Http\Livewire\Home::class)->name('home')->middleware('auth');
 

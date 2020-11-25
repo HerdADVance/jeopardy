@@ -15,35 +15,10 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-        	// [
-        	// 	'name' => 'Alex',
-        	// 	'email' => 'alex@ballsoherd.com',
-        	// 	'password' => Hash::make('vance')
-        	// ],
-         //    [
-         //        'name' => 'Beverage',
-         //        'email' => 'beverage@ballsoherd.com',
-         //        'password' => Hash::make('beverage')
-         //    ],
-         //    [
-         //        'name' => 'Chuy',
-         //        'email' => 'chuy@ballsoherd.com',
-         //        'password' => Hash::make('miller')
-         //    ],
-         //    [
-         //        'name' => 'Cody',
-         //        'email' => 'cody@ballsoherd.com',
-         //        'password' => Hash::make('rohrig')
-         //    ],
-         //    [
-         //        'name' => 'Whitt',
-         //        'email' => 'whitt@ballsoherd.com',
-         //        'password' => Hash::make('whitt')
-         //    ],
             [
                 'name' => 'Alex',
                 'username' => 'alex',
-                'password' => Hash::make('Se7en')
+                'password' => Hash::make('vance')
             ],
             [
                 'name' => 'Beverage',

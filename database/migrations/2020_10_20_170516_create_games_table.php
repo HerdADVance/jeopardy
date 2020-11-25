@@ -19,8 +19,10 @@ class CreateGamesTable extends Migration
             $table->unsignedBigInteger('host');
             $table->unsignedBigInteger('player_turn');
             $table->unsignedBigInteger('player_guess');
-            //$table->unsignedBigInteger('board1_id');
-            //$table->unsignedBigInteger('board2_id');
+            $table->unsignedBigInteger('active_question')->nullable();
+            $table->string('active_text')->nullable();
+            $table->boolean('clue_active')->default(false);
+            $table->boolean('answer_active')->default(false);
             $table->timestamps();
         });
     }

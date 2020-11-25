@@ -1,0 +1,6 @@
+ShouldBroadcastNow bypasses queue
+
+event(new ClueSelected($game->id));
+broadcast(new ClueSelected($game->id))->toOthers();
+
+Only private channels need to be defined in routes/channels.php
